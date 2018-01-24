@@ -1,0 +1,6 @@
+com\kaligo\test\LoginPageMain.class
+com\kaligo\test\UpdateProfile.class
+com\kaligo\test\LoginPageProcess.class
+com\kaligo\test\NegativeTestLoginPage.class
+com\kaligo\test\NegativeTestUpdateProfile.class
+com\kaligo\test\constants\KaligoConstants.class
