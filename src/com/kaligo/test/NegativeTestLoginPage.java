@@ -113,6 +113,7 @@ public class NegativeTestLoginPage {
 		}
 
 		//3 invalid attempts - user should not get locked out as per system behavior
+		Thread.sleep(3000);
 		usernameTextbox.clear();
 		usernameTextbox.sendKeys(KaligoConstants.emailAdd);
 		passwordTextbox.clear();
@@ -134,6 +135,8 @@ public class NegativeTestLoginPage {
 		rememberMeCheckbox.isDisplayed();
 		rememberMeCheckbox.click();
 		usernameTextbox.click();
+		passwordTextbox.click();
+		Thread.sleep(3000);
 		WebDriverWait waitConfirmButton = new WebDriverWait(driver, 90);
 		WebElement signIn = waitConfirmButton.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[14]/div/div/div/div[2]/form/div[3]/button")));
 		if(signIn.isDisplayed()) {
@@ -151,6 +154,7 @@ public class NegativeTestLoginPage {
 		}
 
 		//enter Email Add in big caps - user should be successfully logged in
+		Thread.sleep(3000);
 		WebDriverWait waitConfirmv2 = new WebDriverWait(driver, 90);
 		waitConfirmv2.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-gif")));
 		WebDriverWait waitConfirmLoginBtn = new WebDriverWait(driver, 90);

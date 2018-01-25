@@ -24,7 +24,16 @@ public class LoginPageProcess {
 		} else {
 			System.out.println("The Login/Sign-up link is not displayed");
 		}
-		
+
+		//find the header title
+		WebElement headerTitle = waitConfirm.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[14]/div/div/div/div[1]/h3")));
+		String headerverification = headerTitle.getText();
+		if(headerverification.equals(KaligoConstants.headerText)) {
+			System.out.println("SIGN IN heafer title is located");
+		} else {
+			System.out.println("BUG: Unable to locate SIGN IN header title");
+		}
+
 
 		//find the Email label text
 		WebElement emailLabelText = waitConfirm.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"sign-in-form\"]/div[2]/form/div[1]/label")));
@@ -89,6 +98,9 @@ public class LoginPageProcess {
 		}else {
 			System.out.println("BUG: The sign in button is not displayed");
 		}
+
+		WebDriverWait waitConfirmSpin = new WebDriverWait(driver, 90);
+		waitConfirmSpin.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-gif")));
 
 		//Find and click My Account Menu
 		WebElement editAccountInfo = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/header/div/nav/a/div")));
