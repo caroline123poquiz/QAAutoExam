@@ -134,7 +134,7 @@ public class NegativeTestLoginPage {
 		rememberMeCheckbox.click();
 		usernameTextbox.click();
 		passwordTextbox.click();
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		WebDriverWait waitConfirmButton = new WebDriverWait(driver, 90);
 		WebElement signIn = waitConfirmButton.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[14]/div/div/div/div[2]/form/div[3]/button")));
 		if(signIn.isDisplayed()) {

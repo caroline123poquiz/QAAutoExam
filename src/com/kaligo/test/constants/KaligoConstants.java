@@ -4,7 +4,7 @@ package com.kaligo.test.constants;
 public class KaligoConstants {
 
 	public static final String emailAdd = "trmr000555@gmail.com";
-	public static final String password = "L_tyt4f4";
+	public static final String password = "@d3v3l0p3r4C";
 	public static final String headerText = "SIGN IN";
 	public static final String emailLblText = "Email";
 	public static final String passwordLblText = "Password";

@@ -100,7 +100,7 @@ public class UpdatePassword {
 			System.out.println("BUG: Please check. User is not successfully logged in.  User should be redirected to the page with "+KaligoConstants.successfulLogin + " button");
 		}
 		
-		//Verify that password is successfully changed and user can login with the latest password
+		/*//Verify that password is successfully changed and user can login with the latest password
 		WebElement editMyAccountInfo = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/header/div/nav/a/div")));
 		editMyAccountInfo.click();
 		WebElement editProfile = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/div[1]/div/div/div[3]/form[1]/div[1]/button")));
@@ -133,6 +133,6 @@ public class UpdatePassword {
 			System.out.println("User has successfully logged in with the new password.");
 		} else {
 			System.out.println("BUG: Please check. User is not successfully logged in with the new password. User should be redirected to the page with "+KaligoConstants.successfulLogin + " button");
-		}		
+		}*/		
 	}
 }
