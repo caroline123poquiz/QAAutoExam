@@ -36,6 +36,7 @@ public class KaligoConstants {
 	public static final String invalidCountry = "000#$@";
 	public static final String noSearchResult = "No matches found";
 	public static final String emailAddPrefix = "tr";
-
-			
+	public static final String signInButtonLabelText = "SIGN IN";
+	public static final String signUpLinkLabelText = "Sign up";
+	public static final String forgotYourPasswordLabelText = "Forgot your password?";			
 }
