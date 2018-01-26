@@ -27,8 +27,8 @@ public class LoginPageProcess {
 
 		//find the header title
 		WebElement headerTitle = waitConfirm.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[14]/div/div/div/div[1]/h3")));
-		String headerverification = headerTitle.getText();
-		if(headerverification.equals(KaligoConstants.headerText)) {
+		String headerVerification = headerTitle.getText();
+		if(headerVerification.equals(KaligoConstants.headerText)) {
 			System.out.println("SIGN IN heafer title is located");
 		} else {
 			System.out.println("BUG: Unable to locate SIGN IN header title");
