@@ -57,7 +57,6 @@ public class NegativeTestUpdateProfile {
 		WebElement editAddress = waitEditAdd.until(ExpectedConditions.elementToBeClickable(By.id("address")));
 		if(editAddress.isDisplayed()) {
 			editAddress.clear();
-			System.out.println("Address is displayed");
 		}else {
 			System.out.println("BUG: Unable to locate/update address");
 		}
@@ -75,10 +74,16 @@ public class NegativeTestUpdateProfile {
 		} else {
 			System.out.println("BUG: The search result message is incorrect when invalid country is entered");
 		}
-
-		//click cancel
-		editCountry.click();
-		WebDriverWait waitCancelBtn = new WebDriverWait(driver, 20);
+		
+		
+		//click company details and click cancel
+		WebElement deleteInvalidCountry = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[14]/div/input")));
+		deleteInvalidCountry.sendKeys(Keys.ESCAPE);
+		//WebElement editCompanyDetails = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.id("company-details")));
+		//editCompanyDetails.click();
+		//WebElement editCompany = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.id("//*[@id=\"company\"]")));
+		//editCompany.click();
+		WebDriverWait waitCancelBtn = new WebDriverWait(driver, 50);
 		WebElement cancelBtn = waitCancelBtn.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/div[1]/div/div/div[3]/form[1]/div[1]/button[2]")));
 		cancelBtn.click();
 		//Check the Address if it was cleared
@@ -101,7 +106,7 @@ public class NegativeTestUpdateProfile {
 		WebElement countryValueViewMode = waitConfirm.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[1]/div/div/div[3]/form[1]/div[10]/div")));
 		String countryValueVerificationViewMode = countryValueViewMode.getText();
 		if(countryValueVerificationViewMode.equalsIgnoreCase(KaligoConstants.updatedCountry)) {
-			System.out.println("The displayed Country in the Profile is "+KaligoConstants.updatedCountry+" which is correct");
+			System.out.println("The displayed Country in the Profile is "+KaligoConstants.updatedCountry+" is correct, it was not changed");
 		} else {
 			System.out.println("BUG: The Country is incorrect" +  countryValueVerificationViewMode + countryValueViewMode);
 		} 

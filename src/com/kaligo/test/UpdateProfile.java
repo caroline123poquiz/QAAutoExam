@@ -86,6 +86,14 @@ public class UpdateProfile {
 			System.out.println("BUG: Unable to locate/select Month of Birth");
 		}
 
+		//Verify that the email address textbox is disabled
+		boolean emailAddressTextboxDisabled = driver.findElement(By.id("address")).isDisplayed();
+		if(emailAddressTextboxDisabled==true) {
+			System.out.println("Email Address is disabled and grayed out.");
+		}else {
+			System.out.println("BUG: Please check. Email Address is enabled");
+		}
+
 		//Find and modify Address
 		WebElement editAddress = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.id("address")));
 		if(editAddress.isDisplayed()) {
@@ -248,7 +256,7 @@ public class UpdateProfile {
 		} 
 
 		//Check Country in the profile page after saving the changes
-		WebElement countryValueViewMode = waitConfirm.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[1]/div/div/div[3]/form[1]/div[12]/div")));
+		WebElement countryValueViewMode = waitConfirm.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[1]/div/div/div[3]/form[1]/div[10]/div")));
 		String countryValueVerificationViewMode = countryValueViewMode.getText();
 		if(countryValueVerificationViewMode.equalsIgnoreCase(KaligoConstants.updatedCountry)) {
 			System.out.println("The displayed Country in the Profile Page(view mode) is correct");
@@ -273,7 +281,7 @@ public class UpdateProfile {
 		} else {
 			System.out.println("BUG: The displayed Company Details in the Profile Page(view mode) is incorrect");
 		} 
-		
+
 		//Logout user
 		WebElement logoutUser = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/header/div/nav/div[1]")));
 		if(logoutUser.isDisplayed()) {
@@ -282,6 +290,9 @@ public class UpdateProfile {
 		}else {
 			System.out.println("BUG:Unable to locate/log out user");
 		}
+
+		WebDriverWait waitConfirmSpin = new WebDriverWait(driver, 90);
+		waitConfirmSpin.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-gif")));
 	}
 
 }

@@ -35,6 +35,7 @@ public class KaligoConstants {
 	public static final String requiredFieldMessage = "Please fill in your first name";
 	public static final String invalidCountry = "000#$@";
 	public static final String noSearchResult = "No matches found";
+	public static final String emailAddPrefix = "tr";
 
 			
 }

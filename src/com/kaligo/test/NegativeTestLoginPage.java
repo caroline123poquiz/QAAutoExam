@@ -13,10 +13,8 @@ public class NegativeTestLoginPage {
 	public void testNegative(WebDriver driver, String emailAdd, String password) throws InterruptedException {
 
 		//find and click the Login/SignUp link if found after logging out
-		WebDriverWait waitConfirm = new WebDriverWait(driver, 90);
-		waitConfirm.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-gif")));
-		WebDriverWait waitConfirmLogIn = new WebDriverWait(driver, 50);		
-		WebElement loginlink = waitConfirmLogIn.until(ExpectedConditions.elementToBeClickable(By.id("login-signup")));
+		WebDriverWait waitConfirm = new WebDriverWait(driver, 90);		
+		WebElement loginlink = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/header/div/nav/div[2]/div")));
 		if(loginlink.isDisplayed()) {
 			loginlink.click();
 			System.out.println("The Login/Sign-up link is displayed");
@@ -113,7 +111,7 @@ public class NegativeTestLoginPage {
 		}
 
 		//3 invalid attempts - user should not get locked out as per system behavior
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 		usernameTextbox.clear();
 		usernameTextbox.sendKeys(KaligoConstants.emailAdd);
 		passwordTextbox.clear();
@@ -129,14 +127,14 @@ public class NegativeTestLoginPage {
 		signInButton.click();
 		usernameTextbox.clear();
 		passwordTextbox.clear();
-		usernameTextbox.sendKeys(emailAdd);
+		usernameTextbox.sendKeys(KaligoConstants.emailAdd);
 		passwordTextbox.sendKeys(KaligoConstants.password);
 		WebElement rememberMeCheckbox = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.id("user_remember_me")));
 		rememberMeCheckbox.isDisplayed();
 		rememberMeCheckbox.click();
 		usernameTextbox.click();
 		passwordTextbox.click();
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 		WebDriverWait waitConfirmButton = new WebDriverWait(driver, 90);
 		WebElement signIn = waitConfirmButton.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[14]/div/div/div/div[2]/form/div[3]/button")));
 		if(signIn.isDisplayed()) {
