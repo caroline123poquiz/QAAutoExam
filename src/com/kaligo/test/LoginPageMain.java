@@ -30,7 +30,7 @@ public class LoginPageMain  {
 			NegativeTestLoginPage negative = new NegativeTestLoginPage();
 			NegativeTestUpdateProfile negativeScenarios = new NegativeTestUpdateProfile();
 			//Launch the Kaligo Website
-			driver.get("https://www.kaligo.com/"); // url
+			driver.get("https://www.kaligo.com/");
 			//call processRegistration method and pass the webdriver object, username and password
 			WebDriverWait waitConfirm = new WebDriverWait(driver, 20);
 			waitConfirm.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-gif")));
@@ -39,7 +39,7 @@ public class LoginPageMain  {
 			negative.testNegative(driver, KaligoConstants.emailAdd, KaligoConstants.password);
 			negativeScenarios.testNegativeUpdateProfile(driver, KaligoConstants.emailAdd, KaligoConstants.password);
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 			System.out.println("Error encountered:" + e);
 		}
 	}
