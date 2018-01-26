@@ -38,5 +38,10 @@ public class KaligoConstants {
 	public static final String emailAddPrefix = "tr";
 	public static final String signInButtonLabelText = "SIGN IN";
 	public static final String signUpLinkLabelText = "Sign up";
-	public static final String forgotYourPasswordLabelText = "Forgot your password?";			
+	public static final String forgotYourPasswordLabelText = "Forgot your password?";
+	public static final String changeYourPasswordLabelText = "Change Password";
+	public static final String newPasswordLabelText = "New Password";
+	public static final String confirmNewPasswordLabelText = "Confirm New Password";
+	public static final String newPassword = "@d3v3l0p3r";
+	public static final String successfulLogin = "My Account";
 }

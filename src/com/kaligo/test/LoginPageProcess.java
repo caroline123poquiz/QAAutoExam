@@ -124,7 +124,7 @@ public class LoginPageProcess {
 		} else {
 			System.out.println("BUG: Email Add textbox is not displayed");
 		}
-
+		
 
 		//find the Password textbox and enter valid Password
 		WebElement passwordTextbox = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.id("user_password")));
@@ -153,7 +153,7 @@ public class LoginPageProcess {
 			System.out.println("BUG: Unable to locate the close icon");
 		}
 
-		//click the login/sign-up link again
+		//click the login/sign-up link again and enter valid credentials
 		loginLink.click();
 		WebElement findEmailTextbox = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.id("user_email")));
 		findEmailTextbox.sendKeys(KaligoConstants.emailAdd);

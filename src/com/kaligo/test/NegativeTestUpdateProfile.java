@@ -75,17 +75,13 @@ public class NegativeTestUpdateProfile {
 			System.out.println("BUG: The search result message is incorrect when invalid country is entered");
 		}
 		
-		
 		//click company details and click cancel
 		WebElement deleteInvalidCountry = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[14]/div/input")));
 		deleteInvalidCountry.sendKeys(Keys.ESCAPE);
-		//WebElement editCompanyDetails = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.id("company-details")));
-		//editCompanyDetails.click();
-		//WebElement editCompany = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.id("//*[@id=\"company\"]")));
-		//editCompany.click();
 		WebDriverWait waitCancelBtn = new WebDriverWait(driver, 50);
 		WebElement cancelBtn = waitCancelBtn.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/div[1]/div/div/div[3]/form[1]/div[1]/button[2]")));
 		cancelBtn.click();
+		
 		//Check the Address if it was cleared
 		WebElement addressValueViewMode = waitConfirm.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[1]/div/div/div[3]/form[1]/div[7]/div")));
 		String addressValueVerificationViewMode = addressValueViewMode.getText();
@@ -94,6 +90,7 @@ public class NegativeTestUpdateProfile {
 		} else {
 			System.out.println("BUG: The displayed Address in the Profile Page(view mode) is incorrect, it was deleted");
 		} 
+		
 		//Check the First Name if it was cleared 
 		WebElement firstNameValueViewMode = waitConfirm.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[1]/div/div/div[3]/form[1]/div[3]/div")));
 		String firstNameValueVerificationViewMode = firstNameValueViewMode.getText();
@@ -102,6 +99,7 @@ public class NegativeTestUpdateProfile {
 		} else {
 			System.out.println("BUG: The first name is changed which is incorrect.");
 		}
+		
 		//Check Country if it was changed
 		WebElement countryValueViewMode = waitConfirm.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[1]/div/div/div[3]/form[1]/div[10]/div")));
 		String countryValueVerificationViewMode = countryValueViewMode.getText();
@@ -109,6 +107,6 @@ public class NegativeTestUpdateProfile {
 			System.out.println("The displayed Country in the Profile is "+KaligoConstants.updatedCountry+" is correct, it was not changed");
 		} else {
 			System.out.println("BUG: The Country is incorrect" +  countryValueVerificationViewMode + countryValueViewMode);
-		} 
+		}
 	}
 }

@@ -29,6 +29,7 @@ public class LoginPageMain  {
 			UpdateProfile update = new UpdateProfile();
 			NegativeTestLoginPage negative = new NegativeTestLoginPage();
 			NegativeTestUpdateProfile negativeScenarios = new NegativeTestUpdateProfile();
+			UpdatePassword verifyPassword = new UpdatePassword();
 			//Launch the Kaligo Website
 			driver.get("https://www.kaligo.com/");
 			//call processRegistration method and pass the webdriver object, username and password
@@ -38,6 +39,7 @@ public class LoginPageMain  {
 			update.processUpdateAccount(driver);
 			negative.testNegative(driver, KaligoConstants.emailAdd, KaligoConstants.password);
 			negativeScenarios.testNegativeUpdateProfile(driver, KaligoConstants.emailAdd, KaligoConstants.password);
+			verifyPassword.processUpdatePassword(driver);
 		} catch (Exception e) {
 			
 			System.out.println("Error encountered:" + e);
