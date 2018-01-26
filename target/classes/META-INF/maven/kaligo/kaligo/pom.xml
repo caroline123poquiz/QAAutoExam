@@ -8,11 +8,18 @@
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.6.1</version>
+				<!-- <artifactId>maven-compiler-plugin</artifactId> -->
+				<artifactId>maven-assembly-plugin</artifactId>
+				<!-- <version>3.6.1</version> -->
 				<configuration>
-					<source />
-					<target />
+					<archive>
+						<manifest>
+							<mainClass>com.kaligo.test.LoginPageMain</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
 				</configuration>
 			</plugin>
 		</plugins>

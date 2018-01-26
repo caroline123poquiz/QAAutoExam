@@ -1,5 +1,9 @@
 package com.kaligo.test;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.Properties;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -13,8 +17,13 @@ public class LoginPageMain  {
 
 	public static void main (String[] args) throws InterruptedException {
 		try {
-			//launch firefox browser  
-			System.setProperty("webdriver.gecko.driver", "C:\\Users\\cpoquiz\\Documents\\geckoFirefox\\geckodriver.exe");	
+			Properties prop = new Properties();
+			InputStream input = null;
+			input = new FileInputStream("resources/config.properties");
+			prop.load(input);
+			String geckoDriver = prop.getProperty("gecko.driver.path");
+			//launch firefox browser 
+			System.setProperty("webdriver.gecko.driver", geckoDriver);	
 			WebDriver driver = new FirefoxDriver();
 			LoginPageProcess process = new LoginPageProcess();
 			UpdateProfile update = new UpdateProfile();
