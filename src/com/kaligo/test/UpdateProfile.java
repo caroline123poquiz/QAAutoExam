@@ -15,7 +15,7 @@ import com.kaligo.test.constants.KaligoConstants;
 public class UpdateProfile {
 	public static final String uuid = UUID.randomUUID().toString();
 
-	public void processUpdateAccount(WebDriver driver) {
+	public void processUpdateAccount(WebDriver driver) throws InterruptedException {
 		WebDriverWait waitConfirm = new WebDriverWait(driver, 50);
 		//Find the "Edit Profile" button and click it
 		WebElement editProfile = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/div[1]/div/div/div[3]/form[1]/div[1]/button")));
@@ -293,7 +293,8 @@ public class UpdateProfile {
 
 		WebDriverWait waitConfirmSpin = new WebDriverWait(driver, 150);
 		waitConfirmSpin.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-gif")));
-		WebDriverWait waitConfirmLoginLink = new WebDriverWait(driver, 90);		
+		WebDriverWait waitConfirmLoginLink = new WebDriverWait(driver, 90);
+		Thread.sleep(1000);
 		WebElement loginlink = waitConfirmLoginLink.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/header/div/nav/div[2]/div")));
 		loginlink.click();
 	}
