@@ -162,10 +162,10 @@ public class UpdatePassword {
 		cancelBtn.click();
 		WebElement logoutUser = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/header/div/nav/div[1]/div")));
 		logoutUser.click();
-		WebDriverWait waitConfirmSpin = new WebDriverWait(driver, 20);
+		WebDriverWait waitConfirmSpin = new WebDriverWait(driver, 90);
 		waitConfirmSpin.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-gif")));
-		WebDriverWait waitConfirmLoginLink = new WebDriverWait(driver, 150);
 		Thread.sleep(1000);
+		WebDriverWait waitConfirmLoginLink = new WebDriverWait(driver, 90);
 		WebElement loginLink = waitConfirmLoginLink.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/header/div/nav/div[2]/div")));
 		loginLink.click();
 		WebElement clickEmailTextbox = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.id("user_email")));
