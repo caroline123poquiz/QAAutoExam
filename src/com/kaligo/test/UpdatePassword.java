@@ -164,7 +164,7 @@ public class UpdatePassword {
 		logoutUser.click();
 		WebDriverWait waitConfirmSpin = new WebDriverWait(driver, 90);
 		waitConfirmSpin.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-gif")));
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		WebDriverWait waitConfirmLoginLink = new WebDriverWait(driver, 90);
 		WebElement loginLink = waitConfirmLoginLink.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/header/div/nav/div[2]/div")));
 		loginLink.click();
@@ -202,11 +202,10 @@ public class UpdatePassword {
 		logoutUserVerifyLatestPassword.click();
 		waitConfirmSpinner = new WebDriverWait(driver, 150);
 		waitConfirmSpinner.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-gif")));
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		WebDriverWait loginToVerifyLatestPassword = new WebDriverWait(driver, 150);
 		WebElement loginToVerifyLatestVerification = loginToVerifyLatestPassword.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/header/div/nav/div[2]/div")));
 		loginToVerifyLatestVerification.click();
-		Thread.sleep(1000);
 		WebElement enterEmailAdd = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.id("user_email")));
 		enterEmailAdd.sendKeys(KaligoConstants.emailAdd);
 		WebElement enterLatestPassword = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.id("user_password")));
