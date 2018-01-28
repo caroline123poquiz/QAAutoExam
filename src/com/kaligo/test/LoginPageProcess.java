@@ -17,7 +17,6 @@ public class LoginPageProcess {
 		//find and click the Login/SignUp link if found
 		WebDriverWait waitConfirm = new WebDriverWait(driver, 50);		
 		WebElement loginLink = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/header/div/nav/div[2]/div")));
-		//WebElement loginLink = driver.findElement(By.id("login-signup"));
 		if(loginLink.isDisplayed()) {
 			loginLink.click();
 			System.out.println("The Login/Sign-up link is displayed in the Homepage");
