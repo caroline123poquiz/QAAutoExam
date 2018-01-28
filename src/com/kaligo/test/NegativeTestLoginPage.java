@@ -118,9 +118,10 @@ public class NegativeTestLoginPage {
 		signInButton.click();
 		usernameTextbox.clear();
 		passwordTextbox.clear();
+		Thread.sleep(1000);
 		usernameTextbox.sendKeys(KaligoConstants.emailAdd);
 		passwordTextbox.sendKeys(KaligoConstants.password);
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		WebDriverWait waitConfirmButton = new WebDriverWait(driver, 60);
 		WebElement signIn = waitConfirmButton.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[14]/div/div/div/div[2]/form/div[3]/button")));
 		signIn.click();	
