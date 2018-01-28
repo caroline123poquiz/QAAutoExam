@@ -12,17 +12,8 @@ public class NegativeTestLoginPage {
 
 	public void testNegative(WebDriver driver, String emailAdd, String password) throws InterruptedException {
 
-		//find and click the Login/SignUp link if found after logging out
-		WebDriverWait waitConfirm = new WebDriverWait(driver, 90);		
-		WebElement loginlink = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/header/div/nav/div[2]/div")));
-		if(loginlink.isDisplayed()) {
-			loginlink.click();
-			System.out.println("The Login/Sign-up link is displayed");
-		} else {
-			System.out.println("The Login/Sign-up link is not displayed");
-		}
-
 		//click the sign in button with blank email and blank password - validation message should display
+		WebDriverWait waitConfirm = new WebDriverWait(driver, 90);		
 		WebElement signInButton = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[14]/div/div/div/div[2]/form/div[3]/button")));
 		signInButton.isDisplayed();
 		signInButton.click();
@@ -92,7 +83,7 @@ public class NegativeTestLoginPage {
 		usernameTextbox.clear();
 		usernameTextbox.sendKeys(KaligoConstants.emailAdd);
 		passwordTextbox.clear();
-		passwordTextbox.sendKeys(KaligoConstants.incorrectPassword);
+		passwordTextbox.sendKeys(KaligoConstants.password+"1");
 		signInButton.click();
 		if(validationMessageVerification.equals(KaligoConstants.validationMessage)) {
 			System.out.println("Incorrect password has been entered, '" + KaligoConstants.validationMessage + "' is displayed.");
@@ -115,7 +106,7 @@ public class NegativeTestLoginPage {
 		usernameTextbox.clear();
 		usernameTextbox.sendKeys(KaligoConstants.emailAdd);
 		passwordTextbox.clear();
-		passwordTextbox.sendKeys(KaligoConstants.incorrectPassword);
+		passwordTextbox.sendKeys(KaligoConstants.password+"1");
 		signInButton.click();
 		usernameTextbox.clear();
 		usernameTextbox.sendKeys(KaligoConstants.incorrectEmailAdd);
@@ -129,21 +120,12 @@ public class NegativeTestLoginPage {
 		passwordTextbox.clear();
 		usernameTextbox.sendKeys(KaligoConstants.emailAdd);
 		passwordTextbox.sendKeys(KaligoConstants.password);
-		WebElement rememberMeCheckbox = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.id("user_remember_me")));
-		rememberMeCheckbox.isDisplayed();
-		rememberMeCheckbox.click();
-		usernameTextbox.click();
-		passwordTextbox.click();
-		Thread.sleep(3000);
-		WebDriverWait waitConfirmButton = new WebDriverWait(driver, 90);
+		Thread.sleep(2000);
+		WebDriverWait waitConfirmButton = new WebDriverWait(driver, 60);
 		WebElement signIn = waitConfirmButton.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[14]/div/div/div/div[2]/form/div[3]/button")));
-		if(signIn.isDisplayed()) {
-			System.out.println("Sign In button is located");
-			signIn.click();	
-		} else {
-			System.out.println("BUG: Please check. Unable to locate the sign in button");
-		}
-		WebElement logoutUser = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/header/div/nav/div[1]/div")));
+		signIn.click();	
+		WebDriverWait waitConfirmLogoutButton = new WebDriverWait(driver, 60);
+		WebElement logoutUser = waitConfirmLogoutButton.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/header/div/nav/div[1]/div")));
 		if(logoutUser.isDisplayed()) {
 			System.out.println("User is successfully logged in after 3 invalid attempts.");
 			logoutUser.click();
@@ -153,27 +135,28 @@ public class NegativeTestLoginPage {
 
 		//enter Email Add in big caps - user should be successfully logged in
 		Thread.sleep(3000);
-		WebDriverWait waitConfirmv2 = new WebDriverWait(driver, 90);
+		WebDriverWait waitConfirmv2 = new WebDriverWait(driver, 150);
 		waitConfirmv2.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-gif")));
-		WebDriverWait waitConfirmLoginBtn = new WebDriverWait(driver, 90);
+		WebDriverWait waitConfirmLoginBtn = new WebDriverWait(driver, 150);
 		WebElement loginLink = waitConfirmLoginBtn.until(ExpectedConditions.elementToBeClickable(By.id("login-signup")));
-		if(loginLink.isDisplayed()) {
-			System.out.println("The Login/SignUp link is located");
-			loginLink.click();	
-		} else {
-			System.out.println("Unable to locate Login/SignUp and user cannot login");
-		}
+		loginLink.click();	
 		WebElement emailTextboxv2 = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.id("user_email")));
 		emailTextboxv2.sendKeys(KaligoConstants.emailAdd.toUpperCase());
 		WebElement enterValidPassword = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.id("user_password")));
 		enterValidPassword.sendKeys(KaligoConstants.password);
-		WebElement signInBttn = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[14]/div/div/div/div[2]/form/div[3]/button")));
-		if(signInBttn.isDisplayed()) {
-			System.out.println("Login button is located");
-			signInBttn.click();	
-			System.out.println("User has successfully logged in");
-		} else {
-			System.out.println("Unable to locate the Sign In button");
+		WebDriverWait waitConfirmSignInButton = new WebDriverWait(driver, 150);
+		WebElement signInBttn = waitConfirmSignInButton.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[14]/div/div/div/div[2]/form/div[3]/button")));
+		signInBttn.click();
+		WebDriverWait waitConfirmSpinnerIsGone = new WebDriverWait(driver, 90);
+		waitConfirmSpinnerIsGone.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-gif")));
+		WebDriverWait waitConfirmMyAccount = new WebDriverWait(driver, 90);
+		WebElement editAccountInfo = waitConfirmMyAccount.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/header/div/nav/a/div")));
+		if(editAccountInfo.isDisplayed()) {
+			editAccountInfo.click();
+			System.out.println("User has successfully login with email add in big caps.");
+		}else {
+			System.out.println("BUG: Please check. User cannot login with email add in big caps.");
 		}
+
 	}
 }

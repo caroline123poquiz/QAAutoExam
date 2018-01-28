@@ -13,20 +13,8 @@ public class NegativeTestUpdateProfile {
 
 	public void testNegativeUpdateProfile(WebDriver driver, String emailadd, String password) {
 
-		//Find and click My Account Menu
-		WebDriverWait waitConfirmv2 = new WebDriverWait(driver, 90);
-		waitConfirmv2.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-gif")));
-		WebDriverWait waitConfirm = new WebDriverWait(driver, 90);
-		WebElement editAccountInfo = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/header/div/nav/a/div")));
-		if(editAccountInfo.isDisplayed()) {
-			editAccountInfo.click();
-			System.out.println("My Account profile is displayed");
-		}else {
-			System.out.println("BUG: Unable to find My Account link");
-		}
-
 		//Find the "Edit Profile" button and click it
-		WebDriverWait waitConfirmSpinner = new WebDriverWait(driver, 60);
+		WebDriverWait waitConfirmSpinner = new WebDriverWait(driver, 90);
 		waitConfirmSpinner.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-gif")));
 		WebDriverWait waitEditProfileBtn = new WebDriverWait(driver, 90);
 		WebElement editProfile = waitEditProfileBtn.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/div[1]/div/div/div[3]/form[1]/div[1]/button")));
@@ -38,6 +26,7 @@ public class NegativeTestUpdateProfile {
 		}
 
 		//Verify that First Name is a required field
+		WebDriverWait waitConfirm = new WebDriverWait(driver, 90);
 		WebElement editFirstName = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.id("first-name")));
 		if(editFirstName.isDisplayed()) {
 			editFirstName.clear();

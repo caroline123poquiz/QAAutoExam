@@ -16,7 +16,7 @@ public class LoginPageProcess {
 
 		//find and click the Login/SignUp link if found
 		WebDriverWait waitConfirm = new WebDriverWait(driver, 50);		
-		WebElement loginLink = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.id("login-signup")));
+		WebElement loginLink = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/header/div/nav/div[2]/div")));
 		//WebElement loginLink = driver.findElement(By.id("login-signup"));
 		if(loginLink.isDisplayed()) {
 			loginLink.click();
@@ -171,11 +171,12 @@ public class LoginPageProcess {
 			System.out.println("BUG: The sign in button is not displayed");
 		}
 
-		WebDriverWait waitConfirmSpin = new WebDriverWait(driver, 90);
+		WebDriverWait waitConfirmSpin = new WebDriverWait(driver, 150);
 		waitConfirmSpin.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-gif")));
 
 		//Find and click My Account Menu
-		WebElement editAccountInfo = waitConfirm.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/header/div/nav/a/div")));
+		WebDriverWait waitConfirmMyAccount = new WebDriverWait(driver, 150);
+		WebElement editAccountInfo = waitConfirmMyAccount.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/header/div/nav/a/div")));
 		if(editAccountInfo.isDisplayed()) {
 			editAccountInfo.click();
 			System.out.println("My Account profile is displayed");

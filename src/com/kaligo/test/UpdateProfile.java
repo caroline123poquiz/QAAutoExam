@@ -291,8 +291,11 @@ public class UpdateProfile {
 			System.out.println("BUG:Unable to locate/log out user");
 		}
 
-		WebDriverWait waitConfirmSpin = new WebDriverWait(driver, 90);
+		WebDriverWait waitConfirmSpin = new WebDriverWait(driver, 150);
 		waitConfirmSpin.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-gif")));
+		WebDriverWait waitConfirmLoginLink = new WebDriverWait(driver, 90);		
+		WebElement loginlink = waitConfirmLoginLink.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/header/div/nav/div[2]/div")));
+		loginlink.click();
 	}
 
 }

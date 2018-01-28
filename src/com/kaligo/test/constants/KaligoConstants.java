@@ -3,8 +3,8 @@ package com.kaligo.test.constants;
 
 public class KaligoConstants {
 
-	public static final String emailAdd = "trmr000555@gmail.com";
-	public static final String password = "@d3v3l0p3r4C";
+	public static final String emailAdd = "trmr999003@gmail.com";
+	public static final String password = "F2LG9a3K";
 	public static final String headerText = "SIGN IN";
 	public static final String emailLblText = "Email";
 	public static final String passwordLblText = "Password";
@@ -30,7 +30,6 @@ public class KaligoConstants {
 	public static final String invalidEmailAdd = "trmr000555@gmail";
 	public static final String incorrectEmailAdd = "tremr000555@gmail.com";
 	public static final String notYetRegisteredEmailAdd = "carolinepoquiz@gmail.com";
-	public static final String incorrectPassword = "L_tyt4f41";
 	public static final String specialCharactersPassword = "####@@@$$";
 	public static final String requiredFieldMessage = "Please fill in your first name";
 	public static final String invalidCountry = "000#$@";
@@ -42,6 +41,14 @@ public class KaligoConstants {
 	public static final String changeYourPasswordLabelText = "Change Password";
 	public static final String newPasswordLabelText = "New Password";
 	public static final String confirmNewPasswordLabelText = "Confirm New Password";
-	public static final String newPassword = "@d3v3l0p3r";
+	public static final String newPassword = "password@1";
 	public static final String successfulLogin = "My Account";
+	public static final String emptyPasswordValidationMessage = "Please enter your existing password";
+	public static final String emptyNewPasswordValidationMessage = "Please enter your new password";
+	public static final String confirmNewPasswordValidationMessage = "Please enter your password confirmation";
+	public static final String errorMessageWhenPasswordIsIncorrect = "There was an error updating your profile. Please try again.";
+	public static final String errorMessageWhenNewPasswordDoesNotMatchConfirmPassword = "Your password confirmation must match password";
+	public static final String errorMessageWhenConfirmPasswordDoesNotMatchNewConfirmPassword = "Your password confirmation must match password";
+	public static final String errorMessageWhenNewPasswordLessThan8Characters = "Your password must consist of at least 8 characters";
+	public static final String newPasswordLessThan8Characters = "@d3v";
 }
